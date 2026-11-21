@@ -1,6 +1,6 @@
 ---
 // Lottie Courses section. variant "home" = overview on the homepage, "full" = the /courses page.
-import { lottieIntro, proof, features, lottie, friends, freePreview, previewShots, courses, packs, platform, closing } from '../lottie';
+import { lottieIntro, proof, features, lottie, meetLottie, freePreview, previewShots, courses, packs, platform, closing } from '../lottie';
 interface Props { variant?: 'home' | 'full' }
 const { variant = 'home' } = Astro.props;
 const full = variant === 'full';
@@ -61,24 +61,14 @@ const HeadingTag = full ? 'h1' : 'h2';
   </section>
 
   {full && (
-    <section class="section lc-friends">
-      <div class="wrap friends-grid">
-        <div class="friends-lead">
-          <img class="lottie-hero" src={lottie.src} alt={lottie.alt} width="440" height="368" loading="lazy" />
-          <div>
-            <span class="eyebrow">Meet the guide</span>
-            <h2>Meet Lottie and friends.</h2>
-            <p>Lottie the axolotl coaches every course. Six pond friends host different topics, so every course looks and feels a little different.</p>
-          </div>
+    <section class="section lc-meet">
+      <div class="wrap meet">
+        <img class="meet-img" src={lottie.src} alt={lottie.alt} width="440" height="368" loading="lazy" />
+        <div>
+          <span class="eyebrow">{meetLottie.eyebrow}</span>
+          <h2>{meetLottie.headline}</h2>
+          {meetLottie.body.map((p) => <p>{p}</p>)}
         </div>
-        <ul class="friends">
-          {friends.map((f) => (
-            <li>
-              <img src={f.src} alt={f.alt} width="440" height="440" loading="lazy" />
-              <span>{f.caption}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   )}
@@ -173,7 +163,7 @@ const HeadingTag = full ? 'h1' : 'h2';
   {full && (
     <section class="section lc-closing">
       <div class="wrap closing">
-        <img src={friends[0].src} alt="" width="440" height="440" loading="lazy" />
+        <img src="/lottie/lottie-golden-pearl.png" alt="" width="440" height="371" loading="lazy" />
         <h2>{closing.headline}</h2>
         <a href="/preview" class="btn btn-primary">Try a free course</a>
       </div>
@@ -219,14 +209,6 @@ const HeadingTag = full ? 'h1' : 'h2';
   .feature h3 { font-size: 1.5rem; }
   .feature p { color: var(--muted); margin: 0; }
 
-  /* Friends */
-  .friends-lead { display: grid; gap: 1.5rem; align-items: center; margin-bottom: 2.5rem; }
-  .friends-lead p { color: var(--muted); font-size: 1.15rem; margin-top: 1rem; max-width: 34rem; }
-  .lottie-hero { width: 220px; }
-  .friends { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  .friends li { background: var(--mist); border-radius: 18px; padding: 1rem .6rem .9rem; text-align: center; display: grid; gap: .5rem; justify-items: center; }
-  .friends img { width: 100%; max-width: 110px; height: 90px; object-fit: contain; }
-  .friends span { font-family: var(--caps); font-weight: 600; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--plum); }
 
   /* Free preview */
   .preview-head { display: grid; gap: 1.2rem; margin-bottom: 2rem; }
@@ -269,14 +251,17 @@ const HeadingTag = full ? 'h1' : 'h2';
 
   /* Closing */
   .closing { text-align: center; display: grid; justify-items: center; gap: 1.4rem; }
-  .closing img { width: 120px; }
+  .closing img { width: 160px; }
+  .meet { display: grid; gap: 2rem; align-items: center; }
+  .meet-img { width: min(300px, 70vw); justify-self: center; }
+  .meet h2 { margin-bottom: 1.2rem; }
+  .meet p { color: var(--muted); font-size: 1.15rem; max-width: 36rem; }
+  @media (min-width: 961px) { .meet { grid-template-columns: 0.8fr 1.2fr; gap: 4rem; } }
 
 
   @media (min-width: 720px) {
     .proof { grid-template-columns: repeat(4, 1fr); padding: 2rem 2.4rem; }
     .features { grid-template-columns: repeat(2, 1fr); }
-    .friends { grid-template-columns: repeat(6, 1fr); }
-    .friends-lead { grid-template-columns: auto 1fr; gap: 2.5rem; }
     .course-row { grid-auto-columns: 44%; padding: 0 24px 1rem; }
   }
   @media (min-width: 961px) {

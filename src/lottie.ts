@@ -34,7 +34,7 @@ export const features = [
   },
   {
     title: 'Made for the people on the floor.',
-    body: 'Phone-first, about an 8th-grade reading level, and short enough for a break. Real shift moments, plain words, no lectures.',
+    body: 'Phone-first, easy to read, and short enough for a break. Real shift moments, plain words, no lectures.',
     image: { src: IMG + 'phone-2-lesson-map.jpg', alt: 'Phone showing a course map of short lessons with Lottie the axolotl' },
     kind: 'phone',
   },
@@ -48,14 +48,14 @@ export const features = [
 
 export const lottie = { src: IMG + 'lottie-pearl.png', alt: 'Lottie the pink axolotl holding a pearl badge' };
 
-export const friends = [
-  { src: IMG + 'friend-cruz.png', alt: 'Cruz, a blue crayfish in a white hard hat', caption: 'Cruz the crayfish' },
-  { src: IMG + 'friend-remy.png', alt: 'Remy, a smiling green frog', caption: 'Remy the frog' },
-  { src: IMG + 'friend-shelby.png', alt: 'Shelby, a teal snail', caption: 'Shelby the snail' },
-  { src: IMG + 'friend-dash.png', alt: 'Dash, a blue dragonfly', caption: 'Dash the dragonfly' },
-  { src: IMG + 'friend-moss.png', alt: 'Moss, a baby turtle with an eggshell cap', caption: 'Moss the baby turtle' },
-  { src: IMG + 'friend-sol.png', alt: 'Sol, a teal and orange sunfish', caption: 'Sol the sunfish' },
-];
+export const meetLottie = {
+  eyebrow: 'Meet your guide',
+  headline: 'Meet Lottie. She never stops growing.',
+  body: [
+    "Lottie is an axolotl, and axolotls never stop growing. They can even regrow what they lose.",
+    "That's the idea behind every course. Learning isn't a box you check once. Lottie coaches your crew through every lesson, so they keep growing too, one short course at a time.",
+  ],
+};
 
 export const freePreview = {
   headline: 'Try a free course: Find Your Leadership Style',
