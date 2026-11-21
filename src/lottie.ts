@@ -10,7 +10,6 @@ export const lottieIntro = {
   subhead:
     'Short, game-style courses in English and Spanish, built for frontline teams on their phones. Five to eight minutes, real situations, and a pearl at the end.',
   image: { src: IMG + 'phone-1-title-screen.jpg', alt: 'Phone showing the start screen of the course Find Your Leadership Style' },
-  desktopImage: { src: IMG + 'desktop-free-preview-title.jpg', alt: 'Desktop view of the Find Your Leadership Style start screen' },
 };
 
 export const proof = [
@@ -63,6 +62,11 @@ export const freePreview = {
   body: 'Six quick rounds built from real shift moments. Find your go-to style and your stretch style, then see the five styles every great lead can use. About 6 minutes, no sign-up, in English or Spanish.',
   image: { src: IMG + 'course-art-find-your-leadership-style.jpg', alt: 'Find Your Leadership Style course artwork' },
 };
+
+export const previewShots = [
+  { src: IMG + 'phone-1-title-screen.jpg', alt: 'Phone showing the start screen of the course Find Your Leadership Style' },
+  { src: IMG + 'phone-4-flip-cards.jpg', alt: 'Phone showing flip cards for five leadership styles' },
+];
 
 export const courses = [
   { slug: 'find-your-leadership-style', category: 'Leadership', title: 'Find Your Leadership Style', time: '6 min', free: true,

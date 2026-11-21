@@ -1,6 +1,6 @@
 ---
 // Lottie Courses section. variant "home" = overview on the homepage, "full" = the /courses page.
-import { lottieIntro, proof, features, lottie, friends, freePreview, courses, packs, platform, closing } from '../lottie';
+import { lottieIntro, proof, features, lottie, friends, freePreview, previewShots, courses, packs, platform, closing } from '../lottie';
 interface Props { variant?: 'home' | 'full' }
 const { variant = 'home' } = Astro.props;
 const full = variant === 'full';
@@ -21,12 +21,8 @@ const HeadingTag = full ? 'h1' : 'h2';
         </div>
       </div>
       <div class="lc-intro-media">
-        <figure class="device phone lc-phone-only">
+        <figure class="device phone">
           <img src={lottieIntro.image.src} alt={lottieIntro.image.alt} width="520" height="1125" />
-        </figure>
-        <figure class="device browser lc-desktop-only">
-          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-          <img src={lottieIntro.desktopImage.src} alt={lottieIntro.desktopImage.alt} width="1400" height="875" />
         </figure>
       </div>
     </div>
@@ -100,14 +96,11 @@ const HeadingTag = full ? 'h1' : 'h2';
           <a href="/preview" class="btn btn-primary">Start the free course</a>
         </div>
       </div>
-      <!-- Phones: course art + button. Desktop: the live course in a frame. -->
-      <a href="/preview" class="preview-art lc-phone-only">
-        <img src={freePreview.image.src} alt={freePreview.image.alt} width="800" height="410" loading="lazy" />
-        <span class="play" aria-hidden="true">▶</span>
+      <a href="/preview" class="preview-phones" aria-label="Start the free course: Find Your Leadership Style">
+        {previewShots.map((img) => (
+          <figure class="device phone small"><img src={img.src} alt={img.alt} width="520" height="1125" loading="lazy" /></figure>
+        ))}
       </a>
-      <div class="preview-frame lc-desktop-only">
-        <iframe src="/preview" title="Find Your Leadership Style, a free Lottie course" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
-      </div>
     </div>
   </section>
 
@@ -209,9 +202,6 @@ const HeadingTag = full ? 'h1' : 'h2';
   .phone.small { width: 200px; padding: 8px; border-radius: 34px; }
   .phone.small img { border-radius: 26px; }
   .phone.small::before { top: 14px; width: 54px; height: 14px; }
-  .browser { width: 100%; max-width: 620px; border-radius: 16px; background: #fff; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 40px 70px -35px rgba(64,2,101,.5); }
-  .browser-bar { display: flex; gap: 6px; padding: 10px 14px; background: var(--mist); }
-  .browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--lilac); }
 
   /* Proof strip */
   .proof { list-style: none; margin: 3rem 0 0; padding: 1.6rem 1.4rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; background: var(--plum); border-radius: 20px; color: #efe7ff; }
@@ -241,10 +231,11 @@ const HeadingTag = full ? 'h1' : 'h2';
   /* Free preview */
   .preview-head { display: grid; gap: 1.2rem; margin-bottom: 2rem; }
   .preview-head p { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.4rem; }
-  .preview-art { position: relative; display: block; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -35px rgba(64,2,101,.5); }
-  .preview-art img { width: 100%; }
-  .play { position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%; background: var(--plum); color: #fff; display: grid; place-items: center; font-size: 1.3rem; padding-left: 4px; box-shadow: 0 0 0 8px rgba(255,255,255,.6); }
-  .preview-frame iframe { display: block; width: 100%; height: 700px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 30px 60px -35px rgba(64,2,101,.45); }
+  .preview-phones { display: flex; justify-content: center; gap: clamp(.8rem, 3vw, 2.5rem); text-decoration: none; }
+  .preview-phones .phone.small { width: min(200px, 42vw); transition: transform .2s; }
+  .preview-phones .phone.small:nth-child(2) { transform: translateY(2rem); }
+  .preview-phones:hover .phone.small:first-child { transform: translateY(-4px); }
+  .lc-preview { padding-bottom: clamp(6rem, 11vw, 9rem); }
 
   /* Course cards: swipe row on phones, grid on desktop */
   .cards-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 1.8rem; }
@@ -280,7 +271,6 @@ const HeadingTag = full ? 'h1' : 'h2';
   .closing { text-align: center; display: grid; justify-items: center; gap: 1.4rem; }
   .closing img { width: 120px; }
 
-  .lc-desktop-only { display: none; }
 
   @media (min-width: 720px) {
     .proof { grid-template-columns: repeat(4, 1fr); padding: 2rem 2.4rem; }
@@ -292,7 +282,6 @@ const HeadingTag = full ? 'h1' : 'h2';
   @media (min-width: 961px) {
     .lc-intro-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
     .lc-phone-only { display: none; }
-    .lc-desktop-only { display: block; }
     .features { grid-template-columns: repeat(4, 1fr); }
     .preview-head, .split { grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: end; }
     .split { align-items: start; }
