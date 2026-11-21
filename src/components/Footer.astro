@@ -1,0 +1,24 @@
+---
+import { SITE } from '../site';
+---
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <img src="/brand/logo-tagline-rev.png" alt="STRATLEARN, The Strategic Learning Co." width="900" height="223" />
+    <nav aria-label="Footer">
+      <a href="/#services">Services</a>
+      <a href="/#elearning">eLearning Library</a>
+      <a href="/pilates-daddy">Pilates Daddy</a>
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </nav>
+  </div>
+  <div class="wrap legal">&copy; {new Date().getFullYear()} STRATLEARN · The Strategic Learning Co. Pilates Daddy&reg; is a STRATLEARN brand.</div>
+</footer>
+<style>
+  .footer { background: #1b0a2b; color: #bfb2d6; padding: 3.5rem 0 2rem; font-size: .92rem; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .footer img { width: 220px; }
+  .footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .footer a { color: var(--lilac); text-decoration: none; }
+  .footer a:hover { color: #fff; }
+  .legal { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(197,168,245,.18); font-size: .82rem; }
+</style>

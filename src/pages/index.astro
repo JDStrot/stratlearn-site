@@ -1,0 +1,225 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE } from '../site';
+
+// Service copy: Jesse's four offerings. Body text is a first draft; edit freely.
+const services = [
+  {
+    n: '01',
+    title: 'Learning Consultancy',
+    body: 'Strategy before content. We map the skills that move your business, find the gaps, and design the learning plan that closes them.',
+    href: '#contact',
+    cta: 'Start a project',
+  },
+  {
+    n: '02',
+    title: 'Fractional L&D',
+    body: 'A senior Learning & Development partner for your company, without a full-time hire. Onboarding, upskilling, leadership programs and the systems to run them.',
+    href: '#contact',
+    cta: 'Ask about availability',
+  },
+  {
+    n: '03',
+    title: 'eLearning Library',
+    body: 'An engaging off-the-shelf course library your team can start today, with custom options built around your brand, your processes and your LMS.',
+    href: '#elearning',
+    cta: 'Explore the library',
+  },
+  {
+    n: '04',
+    title: 'Workshops & Team Building',
+    body: 'Interactive workshops that build real skills, plus team events with energy, including Pilates sessions from Pilates Daddy.',
+    href: '/pilates-daddy',
+    cta: 'See Pilates events',
+  },
+];
+
+const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', 'Custom eLearning', 'Workshops & Team Building', 'Pilates event', 'Something else'];
+---
+<Base>
+  <Header />
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">The Strategic Learning Co.</span>
+          <h1>Learning with a <em>strategy</em> behind it.</h1>
+          <p class="lede">
+            STRATLEARN helps companies build teams that grow: learning consultancy, fractional L&amp;D support,
+            ready-to-launch eLearning, and workshops people actually enjoy.
+          </p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">Let's talk</a>
+            <a href="#services" class="btn btn-ghost">Our services</a>
+          </div>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <img src="/brand/stacked.png" alt="" width="900" height="613" />
+        </div>
+      </div>
+    </section>
+
+    <section class="band" aria-label="The Strategic Learning Co.">
+      <div class="wrap band-inner">
+        <img src="/brand/script-white.png" alt="The Strategic Learning Co." width="900" height="220" />
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="wrap">
+        <span class="eyebrow">Services</span>
+        <h2 class="section-title">Four ways we help your people grow.</h2>
+        <div class="cards">
+          {services.map((s) => (
+            <article class="card">
+              <span class="card-n">{s.n}</span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+              <a class="card-link" href={s.href}>{s.cta} <span aria-hidden="true">→</span></a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="elearning" class="section soft">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">eLearning Library</span>
+          <h2>Ready when your team is.</h2>
+        </div>
+        <div class="split-body">
+          <p>
+            Our off-the-shelf library covers the skills every team needs, built to be engaging, mobile friendly and
+            quick to roll out in your LMS.
+          </p>
+          <ul class="ticks">
+            <li>Launch in days, not months</li>
+            <li>Works in any SCORM-compatible LMS</li>
+            <li>Custom courses in your brand, for your processes</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Request the catalog</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pd-teaser">
+      <div class="wrap pd-grid">
+        <img src="/pilates-daddy/logo.png" alt="Pilates Daddy" width="1000" height="623" class="pd-logo" />
+        <div>
+          <span class="eyebrow">Workshops &amp; Events</span>
+          <h2>Team building, with a little more core.</h2>
+          <p>
+            Pilates Daddy brings high-energy Pilates sessions to your offsite, wellness day or team event. Every level
+            welcome, good music guaranteed.
+          </p>
+          <a href="/pilates-daddy" class="btn btn-ghost">Meet Pilates Daddy</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section soft">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">About</span>
+          <h2>Strategy first. Then learning.</h2>
+        </div>
+        <div class="split-body">
+          <p>
+            Most training fails because it starts with content. We start with the work: what great looks like in your
+            business, and what your people need to get there.
+          </p>
+          <p>
+            STRATLEARN partners with growing companies to design learning that fits how their teams actually work,
+            from the first day on the job to the next promotion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <span class="eyebrow light">Get in touch</span>
+          <h2>Let's build something your team will use.</h2>
+          <p>Tell us a little about your goals and we'll reply within one business day.</p>
+          <p>Prefer email? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          {SITE.calLink && (
+            <button type="button" class="btn btn-light" data-cal-link={SITE.calLink} data-cal-config='{"layout":"month_view"}'>
+              Book a discovery call
+            </button>
+          )}
+        </div>
+        <ContactForm topics={topics} />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  {SITE.calLink && (
+    <script is:inline>
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", { origin: "https://cal.com" });
+    </script>
+  )}
+</Base>
+
+<style>
+  .hero { padding: clamp(4rem, 9vw, 8rem) 0 clamp(4rem, 8vw, 7rem); background:
+    radial-gradient(60rem 30rem at 90% -10%, rgba(197,168,245,.45), transparent 60%),
+    radial-gradient(40rem 25rem at -10% 110%, rgba(107,57,177,.12), transparent 60%); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 4rem; align-items: center; }
+  .hero h1 em { font-style: italic; color: var(--violet); }
+  .lede { font-size: 1.25rem; color: var(--muted); max-width: 34rem; margin: 1.6rem 0 2.2rem; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .hero-mark { padding: 2.5rem; background: #fff; border: 1px solid var(--line); border-radius: 28px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.35); }
+
+  .band { background: var(--plum); padding: 2rem 0; }
+  .band-inner { display: flex; justify-content: center; }
+  .band img { width: min(520px, 90%); }
+
+  .section { padding: clamp(4rem, 9vw, 7rem) 0; }
+  .section.soft { background: var(--mist); }
+  .section-title { max-width: 40rem; margin-bottom: 3rem; }
+
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.6rem; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: var(--lilac); transform: translateY(-3px); }
+  .card-n { font-family: var(--caps); font-weight: 700; color: var(--lilac); letter-spacing: .1em; font-size: .9rem; }
+  .card h3 { margin: 1rem 0 .7rem; }
+  .card p { color: var(--muted); font-size: .98rem; margin: 0 0 1.4rem; flex: 1; }
+  .card-link { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; color: var(--violet); text-decoration: none; }
+  .card-link:hover { color: var(--plum); }
+
+  .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .split-body { font-size: 1.15rem; color: var(--muted); }
+  .ticks { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .6rem; }
+  .ticks li { padding-left: 1.8rem; position: relative; color: var(--ink); }
+  .ticks li::before { content: '✦'; position: absolute; left: 0; color: var(--violet); }
+
+  .pd-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+  .pd-logo { width: 100%; max-width: 460px; justify-self: center; }
+  .pd-teaser p { color: var(--muted); font-size: 1.15rem; margin: 1.2rem 0 2rem; }
+
+  .contact { background: linear-gradient(135deg, var(--plum), #2a0143 70%); color: #efe7ff; }
+  .contact h2 { color: #fff; margin-bottom: 1.2rem; }
+  .contact a { color: var(--lilac); }
+  .eyebrow.light { color: var(--lilac); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
+  .contact-copy .btn { margin-top: 1rem; }
+
+  @media (max-width: 960px) {
+    .hero-grid, .split, .contact-grid, .pd-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-mark { max-width: 420px; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero-mark { display: none; }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+interface Props { cta?: string }
+const { cta = '#contact' } = Astro.props;
+const links = [
+  { href: '/#services', label: 'Services' },
+  { href: '/#elearning', label: 'eLearning' },
+  { href: '/pilates-daddy', label: 'Pilates Daddy' },
+  { href: '/#about', label: 'About' },
+];
+---
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="STRATLEARN home">
+      <img src="/brand/logo.png" alt="STRATLEARN" width="900" height="225" />
+    </a>
+    <nav aria-label="Main">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a href={cta} class="btn btn-primary nav-cta">Let's talk</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .skip { position: absolute; left: -999px; top: 0; background: var(--plum); color: #fff; padding: .6rem 1rem; z-index: 99; }
+  .skip:focus { left: 1rem; top: 1rem; }
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(253,252,255,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 1rem; }
+  .brand img { width: 190px; height: auto; }
+  nav { display: flex; align-items: center; gap: 1.8rem; }
+  nav a:not(.btn) { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--plum); text-decoration: none; }
+  nav a:not(.btn):hover { color: var(--violet); }
+  .nav-cta { padding: .75rem 1.2rem .65rem; font-size: .75rem; }
+  @media (max-width: 860px) {
+    nav a:not(.btn) { display: none; }
+    .brand img { width: 150px; }
+  }
+</style>
