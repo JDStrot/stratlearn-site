@@ -31,12 +31,6 @@ const services = [
   },
 ];
 
-const awards = [
-  { title: 'Stevie Award, Gold', detail: 'Learning or Training Professional of the Year · 2024' },
-  { title: 'OnCon Icon Top 100', detail: 'L&D Professional · 2024, 2025, 2026' },
-  { title: 'SDBJ 40 Under 40', detail: 'San Diego Business Journal · 2026' },
-];
-
 const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning', 'Platform early list', 'Workshops & Team Building', 'Pilates event', 'Something else'];
 ---
 <Base>
@@ -58,13 +52,6 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
           <a href="#contact" class="btn btn-primary">Let's talk</a>
           <a href="#services" class="btn btn-ghost">Our services</a>
         </div>
-      </div>
-      <div class="wrap">
-        <ul class="awards" aria-label="Awards and recognition">
-          {awards.map((a) => (
-            <li><strong>{a.title}</strong><span>{a.detail}</span></li>
-          ))}
-        </ul>
       </div>
     </section>
 
@@ -176,15 +163,8 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
   .sp1 { top: 18%; left: 12%; font-size: 2rem; }
   .sp2 { top: 34%; right: 11%; font-size: 2.6rem; color: #d9c6fa; }
   .sp3 { top: 58%; left: 20%; font-size: 1.1rem; }
-  .awards { list-style: none; padding: 0; margin: clamp(3rem, 6vw, 4.5rem) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .awards li { padding: 1.4rem 1.2rem; display: grid; gap: .3rem; }
-  .awards li + li { border-left: 1px solid var(--line); }
-  .awards strong { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; color: var(--plum); line-height: 1.1; }
-  .awards span { font-size: .88rem; color: var(--muted); }
   @media (max-width: 760px) {
-    .awards { grid-template-columns: 1fr; }
-    .awards li + li { border-left: 0; border-top: 1px solid var(--line); }
-    .sp2 { top: 3%; right: 8%; font-size: 1.8rem; } .sp1 { top: 4%; left: 8%; font-size: 1.3rem; } .sp3 { display: none; }
+        .sp2 { top: 3%; right: 8%; font-size: 1.8rem; } .sp1 { top: 4%; left: 8%; font-size: 1.3rem; } .sp3 { display: none; }
   }
 
   .section { padding: clamp(4rem, 9vw, 7rem) 0; }

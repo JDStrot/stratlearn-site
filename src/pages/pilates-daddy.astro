@@ -184,8 +184,12 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
   .price li::before { content: '✦'; position: absolute; left: 0; color: var(--lilac); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
 
+  @media (max-width: 720px) {
+    .offers { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 0 16px .8rem; scroll-padding: 16px; }
+    .offer { scroll-snap-align: start; }
+  }
   @media (max-width: 960px) {
-    .offers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .offers { grid-template-columns: repeat(3, 1fr); }
     .why, .contact-grid, .media-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .video-wrap, .ring { max-width: 380px; margin: 0 auto; width: 100%; }
   }
