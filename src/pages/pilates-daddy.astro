@@ -110,10 +110,18 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
         <div>
           <span class="eyebrow light">Book Pilates Daddy</span>
           <h2>Bring the energy to your next event.</h2>
-          <p>Tell us your date, group size and location, and we'll send options within one business day.</p>
+          <div class="price">
+            <div class="price-amount">$150 <span>per event</span></div>
+            <ul>
+              <li>I come to you, anywhere in San Diego</li>
+              <li>Guests bring their own mats and props</li>
+              <li>Need mats, a studio or props? Tick it in the form and I'll send options.</li>
+            </ul>
+          </div>
+          <p>Share your date, group size and location, and I'll reply within one business day.</p>
           <p>Prefer email? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
         </div>
-        <ContactForm topics={topics} />
+        <ContactForm topics={topics} needs={['Mats', 'Studio space', 'Props']} messageLabel="Event details" messagePlaceholder="Date, time, group size and location" />
       </div>
     </section>
   </main>
@@ -168,6 +176,12 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
   .contact h2 { color: #fff; margin-bottom: 1.2rem; }
   .contact a { color: var(--lilac); }
   .eyebrow.light { color: var(--lilac); }
+  .price { background: rgba(255,255,255,.07); border: 1px solid rgba(197,168,245,.35); border-radius: 18px; padding: 1.6rem 1.8rem; margin: .4rem 0 1.6rem; }
+  .price-amount { font-family: var(--serif); font-size: 3.4rem; line-height: 1; color: #fff; }
+  .price-amount span { font-family: var(--caps); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--lilac); margin-left: .4rem; }
+  .price ul { list-style: none; padding: 0; margin: 1.1rem 0 0; display: grid; gap: .5rem; }
+  .price li { padding-left: 1.6rem; position: relative; }
+  .price li::before { content: '✦'; position: absolute; left: 0; color: var(--lilac); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
 
   @media (max-width: 960px) {

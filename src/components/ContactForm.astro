@@ -1,7 +1,7 @@
 ---
 import { SITE } from '../site';
-interface Props { topics: string[]; defaultTopic?: string }
-const { topics, defaultTopic = topics[0] } = Astro.props;
+interface Props { topics: string[]; defaultTopic?: string; needs?: string[]; messageLabel?: string; messagePlaceholder?: string }
+const { topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', messagePlaceholder = '' } = Astro.props;
 ---
 <form class="form" method="post" action="/api/contact" novalidate data-contact-form>
   <label>Name<input name="name" autocomplete="name" required /></label>
@@ -12,7 +12,13 @@ const { topics, defaultTopic = topics[0] } = Astro.props;
       {topics.map((t) => <option selected={t === defaultTopic}>{t}</option>)}
     </select>
   </label>
-  <label>Message<textarea name="message" rows="5" required></textarea></label>
+  {needs.length > 0 && (
+    <fieldset class="needs">
+      <legend>I'll need <span class="opt">(optional)</span></legend>
+      {needs.map((n) => <label class="check"><input type="checkbox" name="needs" value={n} /> {n}</label>)}
+    </fieldset>
+  )}
+  <label>{messageLabel}<textarea name="message" rows="5" required placeholder={messagePlaceholder}></textarea></label>
   <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
   {SITE.turnstileSiteKey && <div class="cf-turnstile" data-sitekey={SITE.turnstileSiteKey}></div>}
   <button class="btn btn-primary" type="submit">Send message</button>
@@ -56,6 +62,10 @@ const { topics, defaultTopic = topics[0] } = Astro.props;
   .form input:focus, .form textarea:focus, .form select:focus { outline: 2px solid var(--lilac); border-color: var(--violet); }
   .form .btn { justify-self: start; }
   .form .btn[disabled] { opacity: .6; cursor: wait; }
+  .needs { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; }
+  .needs legend { font-family: var(--caps); font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); margin-bottom: .5rem; padding: 0; }
+  .form .check { display: flex; align-items: center; gap: .5rem; font-family: var(--sans); font-size: 1rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink); cursor: pointer; }
+  .form .check input { width: 1.1rem; height: 1.1rem; accent-color: var(--violet); padding: 0; }
   .hp { position: absolute !important; left: -9999px; }
   .form-status { margin: 0; font-size: .95rem; min-height: 1.4em; }
   .form-status.ok { color: #1d7a46; }

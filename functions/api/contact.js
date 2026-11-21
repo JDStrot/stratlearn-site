@@ -22,6 +22,7 @@ export async function onRequestPost({ request, env }) {
   const email = (form.get('email') || '').toString().trim().slice(0, 200);
   const company = (form.get('company') || '').toString().trim().slice(0, 200);
   const topic = (form.get('topic') || '').toString().trim().slice(0, 100);
+  const needs = form.getAll('needs').map((n) => n.toString().slice(0, 50)).slice(0, 10).join(', ');
   const message = (form.get('message') || '').toString().trim().slice(0, 5000);
 
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -46,7 +47,7 @@ export async function onRequestPost({ request, env }) {
 
   const html = `
     <h2>New website enquiry: ${esc(topic)}</h2>
-    <p><b>Name:</b> ${esc(name)}<br><b>Email:</b> ${esc(email)}<br><b>Company:</b> ${esc(company) || '—'}</p>
+    <p><b>Name:</b> ${esc(name)}<br><b>Email:</b> ${esc(email)}<br><b>Company:</b> ${esc(company) || '—'}${needs ? `<br><b>Needs:</b> ${esc(needs)}` : ''}</p>
     <p style="white-space:pre-wrap">${esc(message)}</p>`;
 
   const res = await fetch('https://api.resend.com/emails', {
