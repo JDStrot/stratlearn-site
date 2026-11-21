@@ -1,0 +1,301 @@
+---
+// Lottie Courses section. variant "home" = overview on the homepage, "full" = the /courses page.
+import { lottieIntro, proof, features, lottie, friends, freePreview, courses, packs, platform, closing } from '../lottie';
+interface Props { variant?: 'home' | 'full' }
+const { variant = 'home' } = Astro.props;
+const full = variant === 'full';
+const packsHref = full ? '#packs' : '/courses#packs';
+const HeadingTag = full ? 'h1' : 'h2';
+---
+<div class="lottie">
+  <!-- 1. Headline block -->
+  <section id="lottie-courses" class="lc-intro">
+    <div class="wrap lc-intro-grid">
+      <div class="lc-intro-copy">
+        <span class="eyebrow">{lottieIntro.eyebrow}</span>
+        <HeadingTag class="lc-h">{lottieIntro.headline}</HeadingTag>
+        <p class="lc-sub">{lottieIntro.subhead}</p>
+        <div class="lc-ctas">
+          <a href="/preview" class="btn btn-primary">Try a free course</a>
+          <a href={packsHref} class="btn btn-ghost">See the industry packs</a>
+        </div>
+      </div>
+      <div class="lc-intro-media">
+        <figure class="device phone lc-phone-only">
+          <img src={lottieIntro.image.src} alt={lottieIntro.image.alt} width="520" height="1125" />
+        </figure>
+        <figure class="device browser lc-desktop-only">
+          <span class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src={lottieIntro.desktopImage.src} alt={lottieIntro.desktopImage.alt} width="1400" height="875" />
+        </figure>
+      </div>
+    </div>
+
+    <!-- 2. Proof strip -->
+    <div class="wrap">
+      <ul class="proof" aria-label="Lottie Courses at a glance">
+        {proof.map((p) => (
+          <li><strong>{p.big}</strong><span>{p.small}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Why it works -->
+  <section class="section soft lc-why">
+    <div class="wrap">
+      <span class="eyebrow">Why it works</span>
+      <h2 class="lc-section-title">Built so people finish, and remember.</h2>
+      <div class="features">
+        {features.map((f) => (
+          <article class="feature">
+            <div class={`feature-media is-${f.kind}`}>
+              {f.kind === 'phone' ? (
+                <figure class="device phone small"><img src={f.image.src} alt={f.image.alt} width="520" height="1125" loading="lazy" /></figure>
+              ) : (
+                <img class="character" src={f.image.src} alt={f.image.alt} width="440" height="371" loading="lazy" />
+              )}
+            </div>
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {full && (
+    <section class="section lc-friends">
+      <div class="wrap friends-grid">
+        <div class="friends-lead">
+          <img class="lottie-hero" src={lottie.src} alt={lottie.alt} width="440" height="368" loading="lazy" />
+          <div>
+            <span class="eyebrow">Meet the guide</span>
+            <h2>Meet Lottie and friends.</h2>
+            <p>Lottie the axolotl coaches every course. Six pond friends host different topics, so every course looks and feels a little different.</p>
+          </div>
+        </div>
+        <ul class="friends">
+          {friends.map((f) => (
+            <li>
+              <img src={f.src} alt={f.alt} width="440" height="440" loading="lazy" />
+              <span>{f.caption}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <!-- 5. Free preview -->
+  <section id="free-course" class={`section lc-preview ${full ? 'soft' : ''}`}>
+    <div class="wrap">
+      <div class="preview-head">
+        <div>
+          <span class="eyebrow">Free preview</span>
+          <h2>{freePreview.headline}</h2>
+        </div>
+        <div>
+          <p>{freePreview.body}</p>
+          <a href="/preview" class="btn btn-primary">Start the free course</a>
+        </div>
+      </div>
+      <!-- Phones: course art + button. Desktop: the live course in a frame. -->
+      <a href="/preview" class="preview-art lc-phone-only">
+        <img src={freePreview.image.src} alt={freePreview.image.alt} width="800" height="410" loading="lazy" />
+        <span class="play" aria-hidden="true">▶</span>
+      </a>
+      <div class="preview-frame lc-desktop-only">
+        <iframe src="/preview" title="Find Your Leadership Style, a free Lottie course" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured courses (six highlights) -->
+  <section class={`section lc-cards ${full ? '' : 'soft'}`}>
+    <div class="wrap">
+      <div class="cards-head">
+        <div>
+          <span class="eyebrow">Featured courses</span>
+          <h2>A taste of the library.</h2>
+        </div>
+        <p class="cards-hint lc-phone-only" aria-hidden="true">Swipe →</p>
+      </div>
+    </div>
+    <ul class="course-row" aria-label="Featured courses">
+      {courses.map((c) => (
+        <li class="course-card">
+          <div class="course-art">
+            <img src={c.image.src} alt={c.image.alt} width="800" height="410" loading="lazy" />
+            {c.free && <span class="free-tag">Free preview</span>}
+          </div>
+          <div class="course-body">
+            <span class="course-meta">{c.category} · {c.time}</span>
+            <h3>{c.title}</h3>
+            <p>{c.synopsis}</p>
+            {c.free && <a class="card-link" href="/preview">Play it free <span aria-hidden="true">→</span></a>}
+          </div>
+        </li>
+      ))}
+    </ul>
+    {!full && (
+      <div class="wrap lc-more">
+        <a href="/courses" class="btn btn-ghost">Explore Lottie Courses</a>
+      </div>
+    )}
+  </section>
+
+  {full && (
+    <section id="packs" class="section lc-packs">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">Industry packs</span>
+          <h2>{packs.headline}</h2>
+        </div>
+        <div>
+          <p class="split-p">{packs.body}</p>
+          <ul class="chips">{packs.chips.map((c) => <li>{c}</li>)}</ul>
+          <a href="/courses?topic=Lottie%20Courses#contact" class="btn btn-primary">See all 25 packs</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {full && (
+    <section class="section lc-platform">
+      <div class="wrap split">
+        <div>
+          <span class="soon">Coming soon</span>
+          <h2>{platform.headline}</h2>
+          <p class="split-p light">{platform.body}</p>
+        </div>
+        <div>
+          <ul class="platform-list">{platform.items.map((i) => <li>{i}</li>)}</ul>
+          <a href="/courses?topic=Platform%20early%20list#contact" class="btn btn-light">Join the early list</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {full && (
+    <section class="section lc-closing">
+      <div class="wrap closing">
+        <img src={friends[0].src} alt="" width="440" height="440" loading="lazy" />
+        <h2>{closing.headline}</h2>
+        <a href="/preview" class="btn btn-primary">Try a free course</a>
+      </div>
+    </section>
+  )}
+</div>
+
+<style>
+  .section { padding: clamp(4rem, 9vw, 7rem) 0; }
+  .soft { background: var(--mist); }
+  .lc-h { font-size: clamp(2.5rem, 6vw, 4.4rem); }
+  .lc-intro { padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+    background: radial-gradient(50rem 28rem at 100% 0%, rgba(197,168,245,.4), transparent 60%); }
+  .lc-intro-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  .lc-sub { font-size: 1.2rem; color: var(--muted); margin: 1.3rem 0 2rem; max-width: 36rem; }
+  .lc-ctas { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .lc-intro-media { display: flex; justify-content: center; }
+  .lc-section-title { margin-bottom: 2.5rem; max-width: 40rem; }
+
+  /* Device frames */
+  .device { margin: 0; }
+  .device img { display: block; width: 100%; height: auto; }
+  .phone { width: min(260px, 70vw); padding: 10px; border-radius: 42px; background: #1b0a2b; box-shadow: 0 40px 70px -35px rgba(64,2,101,.6), inset 0 0 0 2px #3a2255; position: relative; }
+  .phone img { border-radius: 32px; }
+  .phone::before { content: ''; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 70px; height: 18px; border-radius: 10px; background: #1b0a2b; z-index: 1; }
+  .phone.small { width: 200px; padding: 8px; border-radius: 34px; }
+  .phone.small img { border-radius: 26px; }
+  .phone.small::before { top: 14px; width: 54px; height: 14px; }
+  .browser { width: 100%; max-width: 620px; border-radius: 16px; background: #fff; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 40px 70px -35px rgba(64,2,101,.5); }
+  .browser-bar { display: flex; gap: 6px; padding: 10px 14px; background: var(--mist); }
+  .browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--lilac); }
+
+  /* Proof strip */
+  .proof { list-style: none; margin: 3rem 0 0; padding: 1.6rem 1.4rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; background: var(--plum); border-radius: 20px; color: #efe7ff; }
+  .proof li { display: grid; gap: .2rem; }
+  .proof strong { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1; color: #fff; }
+  .proof span { font-size: .9rem; color: var(--lilac); }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+  .feature { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem; display: grid; gap: .6rem; align-content: start; }
+  .feature-media { display: flex; justify-content: center; align-items: flex-end; height: 260px; overflow: hidden; margin: -1.6rem -1.6rem .6rem; padding-top: 1.6rem; background: linear-gradient(180deg, var(--mist), #fff); border-radius: 20px 20px 0 0; }
+  .feature-media .phone { align-self: flex-start; }
+  .feature-media.is-character { align-items: center; padding: 1.2rem; }
+  .character { width: auto; max-height: 200px; }
+  .feature h3 { font-size: 1.5rem; }
+  .feature p { color: var(--muted); margin: 0; }
+
+  /* Friends */
+  .friends-lead { display: grid; gap: 1.5rem; align-items: center; margin-bottom: 2.5rem; }
+  .friends-lead p { color: var(--muted); font-size: 1.15rem; margin-top: 1rem; max-width: 34rem; }
+  .lottie-hero { width: 220px; }
+  .friends { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .friends li { background: var(--mist); border-radius: 18px; padding: 1rem .6rem .9rem; text-align: center; display: grid; gap: .5rem; justify-items: center; }
+  .friends img { width: 100%; max-width: 110px; height: 90px; object-fit: contain; }
+  .friends span { font-family: var(--caps); font-weight: 600; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--plum); }
+
+  /* Free preview */
+  .preview-head { display: grid; gap: 1.2rem; margin-bottom: 2rem; }
+  .preview-head p { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.4rem; }
+  .preview-art { position: relative; display: block; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -35px rgba(64,2,101,.5); }
+  .preview-art img { width: 100%; }
+  .play { position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%; background: var(--plum); color: #fff; display: grid; place-items: center; font-size: 1.3rem; padding-left: 4px; box-shadow: 0 0 0 8px rgba(255,255,255,.6); }
+  .preview-frame iframe { display: block; width: 100%; height: 700px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 30px 60px -35px rgba(64,2,101,.45); }
+
+  /* Course cards: swipe row on phones, grid on desktop */
+  .cards-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 1.8rem; }
+  .cards-hint { margin: 0; font-family: var(--caps); font-weight: 600; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+  .course-row { list-style: none; margin: 0; padding: 0 16px 1rem; display: grid; grid-auto-flow: column; grid-auto-columns: 82%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 16px; -webkit-overflow-scrolling: touch; }
+  .course-card { scroll-snap-align: start; background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .course-art { position: relative; }
+  .course-art img { width: 100%; aspect-ratio: 800 / 410; object-fit: cover; }
+  .free-tag { position: absolute; top: 12px; left: 12px; background: var(--plum); color: #fff; font-family: var(--caps); font-weight: 600; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; padding: .45rem .7rem .35rem; border-radius: 999px; }
+  .course-body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+  .course-meta { font-family: var(--caps); font-weight: 600; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); }
+  .course-body h3 { font-size: 1.45rem; }
+  .course-body p { color: var(--muted); font-size: .96rem; margin: 0; flex: 1; }
+  .card-link { margin-top: .8rem; font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; color: var(--violet); text-decoration: none; }
+  .lc-more { margin-top: 2rem; }
+
+  /* Packs */
+  .split { display: grid; gap: 1.5rem; }
+  .split-p { color: var(--muted); font-size: 1.15rem; }
+  .chips { list-style: none; padding: 0; margin: 1.2rem 0 2rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chips li { background: var(--mist); color: var(--plum); border-radius: 999px; padding: .5rem .9rem; font-size: .92rem; font-weight: 500; }
+
+  /* Platform (coming soon) */
+  .lc-platform { background: linear-gradient(135deg, var(--plum), #2a0143 70%); color: #efe7ff; }
+  .lc-platform h2 { color: #fff; margin-top: .9rem; }
+  .split-p.light { color: #d9cdf0; margin-top: 1rem; }
+  .soon { display: inline-block; background: var(--lilac); color: var(--plum); font-family: var(--caps); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; padding: .5rem .85rem .4rem; border-radius: 999px; }
+  .platform-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .8rem; font-size: 1.08rem; }
+  .platform-list li { padding-left: 1.8rem; position: relative; }
+  .platform-list li::before { content: '✦'; position: absolute; left: 0; color: var(--lilac); }
+
+  /* Closing */
+  .closing { text-align: center; display: grid; justify-items: center; gap: 1.4rem; }
+  .closing img { width: 120px; }
+
+  .lc-desktop-only { display: none; }
+
+  @media (min-width: 720px) {
+    .proof { grid-template-columns: repeat(4, 1fr); padding: 2rem 2.4rem; }
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .friends { grid-template-columns: repeat(6, 1fr); }
+    .friends-lead { grid-template-columns: auto 1fr; gap: 2.5rem; }
+    .course-row { grid-auto-columns: 44%; padding: 0 24px 1rem; }
+  }
+  @media (min-width: 961px) {
+    .lc-intro-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+    .lc-phone-only { display: none; }
+    .lc-desktop-only { display: block; }
+    .features { grid-template-columns: repeat(4, 1fr); }
+    .preview-head, .split { grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: end; }
+    .split { align-items: start; }
+    .course-row { max-width: calc(var(--wrap) + 48px); margin: 0 auto; grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); grid-auto-columns: auto; overflow: visible; gap: 1.25rem; }
+  }
+</style>

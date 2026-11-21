@@ -28,7 +28,9 @@ const { topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', 
 {SITE.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 
 <script define:vars={{ email: SITE.email }}>
+  const wanted = new URLSearchParams(location.search).get('topic');
   document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    if (wanted) { const opt = [...form.topic.options].find((o) => o.value === wanted); if (opt) opt.selected = true; }
     const status = form.querySelector('.form-status');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

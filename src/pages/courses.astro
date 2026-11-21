@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+import LottieCourses from '../components/LottieCourses.astro';
+import { SITE } from '../site';
+
+const topics = ['Lottie Courses', 'Platform early list', 'Custom eLearning', 'Fractional L&D Consultant', 'Something else'];
+---
+<Base
+  title="Lottie Courses"
+  description="Short, game-style courses in English and Spanish, built for frontline teams on their phones. 300+ courses, 25 industry packs, and a free course to try."
+  image="/lottie/course-art-find-your-leadership-style.jpg"
+>
+  <Header />
+  <main id="main">
+    <LottieCourses variant="full" />
+
+    <section id="contact" class="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="eyebrow light">Get in touch</span>
+          <h2>Bring Lottie Courses to your team.</h2>
+          <p>Ask for the full pack list, a custom course, or a spot on the platform early list. We'll reply within one business day.</p>
+          <p>Prefer email? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        </div>
+        <ContactForm topics={topics} />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .contact { padding: clamp(4rem, 9vw, 7rem) 0; background: linear-gradient(135deg, var(--plum), #2a0143 70%); color: #efe7ff; }
+  .contact h2 { color: #fff; margin-bottom: 1.2rem; }
+  .contact a { color: var(--lilac); }
+  .eyebrow.light { color: var(--lilac); }
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+  @media (min-width: 961px) { .contact-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; } }
+</style>

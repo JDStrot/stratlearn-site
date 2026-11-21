@@ -1,0 +1,100 @@
+// Lottie Courses content, from Jesse's website-copy.md (sections 2 to 4).
+// Keep the facts and the "coming soon" wording as written.
+// Don't add "OSHA certified", "compliant" or "meets legal requirements".
+
+const IMG = '/lottie/';
+
+export const lottieIntro = {
+  eyebrow: 'Lottie Courses by STRATLEARN',
+  headline: 'Training your crew will actually finish.',
+  subhead:
+    'Short, game-style courses in English and Spanish, built for frontline teams on their phones. Five to eight minutes, real situations, and a pearl at the end.',
+  image: { src: IMG + 'phone-1-title-screen.jpg', alt: 'Phone showing the start screen of the course Find Your Leadership Style' },
+  desktopImage: { src: IMG + 'desktop-free-preview-title.jpg', alt: 'Desktop view of the Find Your Leadership Style start screen' },
+};
+
+export const proof = [
+  { big: '300+', small: 'courses' },
+  { big: '2', small: 'languages in every course (EN | ES)' },
+  { big: '5–8 min', small: 'per course' },
+  { big: '25', small: 'industry packs' },
+];
+
+export const features = [
+  {
+    title: 'Feels like a game, teaches like a trainer.',
+    body: "Every course is a run of quick taps, checks and mini-games with instant feedback. People stay with it because it's fun, and it sticks because they practice.",
+    image: { src: IMG + 'phone-3-instant-feedback.jpg', alt: 'Phone showing a quiz answer marked correct with +10 XP' },
+    kind: 'phone',
+  },
+  {
+    title: 'English and Spanish, one tap apart.',
+    body: 'Every course has an EN | ES switch built in. No separate versions to manage.',
+    image: { src: IMG + 'phone-5-spanish.jpg', alt: 'Phone showing the same course in Spanish' },
+    kind: 'phone',
+  },
+  {
+    title: 'Made for the people on the floor.',
+    body: 'Phone-first, about an 8th-grade reading level, and short enough for a break. Real shift moments, plain words, no lectures.',
+    image: { src: IMG + 'phone-2-lesson-map.jpg', alt: 'Phone showing a course map of short lessons with Lottie the axolotl' },
+    kind: 'phone',
+  },
+  {
+    title: 'Pearls, streaks and a real certificate.',
+    body: "Finish a course and Lottie hands over a pearl. Ace it and it's golden. A printable certificate backs it up.",
+    image: { src: IMG + 'lottie-golden-pearl.png', alt: 'Lottie with star eyes holding a golden pearl' },
+    kind: 'character',
+  },
+];
+
+export const lottie = { src: IMG + 'lottie-pearl.png', alt: 'Lottie the pink axolotl holding a pearl badge' };
+
+export const friends = [
+  { src: IMG + 'friend-cruz.png', alt: 'Cruz, a blue crayfish in a white hard hat', caption: 'Cruz the crayfish' },
+  { src: IMG + 'friend-remy.png', alt: 'Remy, a smiling green frog', caption: 'Remy the frog' },
+  { src: IMG + 'friend-shelby.png', alt: 'Shelby, a teal snail', caption: 'Shelby the snail' },
+  { src: IMG + 'friend-dash.png', alt: 'Dash, a blue dragonfly', caption: 'Dash the dragonfly' },
+  { src: IMG + 'friend-moss.png', alt: 'Moss, a baby turtle with an eggshell cap', caption: 'Moss the baby turtle' },
+  { src: IMG + 'friend-sol.png', alt: 'Sol, a teal and orange sunfish', caption: 'Sol the sunfish' },
+];
+
+export const freePreview = {
+  headline: 'Try a free course: Find Your Leadership Style',
+  body: 'Six quick rounds built from real shift moments. Find your go-to style and your stretch style, then see the five styles every great lead can use. About 6 minutes, no sign-up, in English or Spanish.',
+  image: { src: IMG + 'course-art-find-your-leadership-style.jpg', alt: 'Find Your Leadership Style course artwork' },
+};
+
+export const courses = [
+  { slug: 'find-your-leadership-style', category: 'Leadership', title: 'Find Your Leadership Style', time: '6 min', free: true,
+    synopsis: 'Find your go-to and stretch styles with a quick style finder built from real shift moments.' },
+  { slug: 'active-listening', category: 'Workplace skills', title: 'Active Listening', time: '7 min',
+    synopsis: 'Most of us listen just long enough to answer. Learn to really hear customers, coworkers and your manager.' },
+  { slug: 'group-chat-drama', category: 'Workplace skills', title: 'Group Chat Drama', time: '7 min',
+    synopsis: 'Work chats can go from memes to meltdown in three messages. How to text so it lands, and how to cool it down.' },
+  { slug: 'coaching-your-crew', category: 'Managers', title: 'Coaching Your Crew', time: '7 min',
+    synopsis: 'Give praise that sticks, fix problems without drama, and teach a task so it lands.' },
+  { slug: 'fire-safety', category: 'Workplace safety', title: 'Fire Safety', time: '7 min',
+    synopsis: 'How fires start, how to stop them, how to use an extinguisher, and when to just get out.' },
+  { slug: 'anatomy-basics-trainers', category: 'Fitness pros', title: 'Anatomy Basics for Trainers', time: '7 min',
+    synopsis: 'The big muscle groups, how joints move and why the spine curves, so trainers coach smarter and safer.' },
+].map((c) => ({ ...c, image: { src: `${IMG}course-art-${c.slug}.jpg`, alt: `${c.title} course artwork` } }));
+
+export const packs = {
+  headline: 'A ready-made path for your industry.',
+  body: 'Each pack gives every role an ordered path: core safety and skills, required training, add-ons, and a Shift Leads and Managers path.',
+  chips: ['Restaurants', 'Retail', 'Grocery', 'Hotels', 'Warehouse and Delivery', 'Fitness and Gyms', 'Child Care', 'Healthcare Support', 'Senior Living', 'Construction', 'Cleaning and Facilities', 'Schools', 'and more'],
+};
+
+export const platform = {
+  headline: 'The platform: coming soon',
+  body: "We're building a simple home for all of it.",
+  items: [
+    'Log in with a QR code or PIN. No email needed.',
+    'Assign courses by role and location.',
+    "Automatic reminders and retraining on each state's schedule.",
+    'Audit-ready completion reports and a manager dashboard.',
+    'SCORM export if you already have an LMS.',
+  ],
+};
+
+export const closing = { headline: 'See it for yourself in six minutes.' };
