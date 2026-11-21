@@ -102,3 +102,44 @@ export const platform = {
 };
 
 export const closing = { headline: 'See it for yourself in six minutes.' };
+
+// Pricing, from Jesse's "STRATLEARN Pricing Recommendation" doc (2026-11-21).
+// Platform features are still "coming soon": keep that wording on any plan that mentions them.
+export const pricing = {
+  eyebrow: 'Pricing',
+  headline: 'Simple pricing. Spanish included.',
+  sub: 'Every course comes in English and Spanish at no extra cost, with badges and printable certificates. Seats are reusable: when someone leaves, their seat moves to the new hire.',
+  founding: {
+    label: 'Founding offer',
+    text: 'Pro at $35 per learner per year, locked for 2 years. For our first 50 customers.',
+    cta: 'Claim a founding spot',
+    topic: 'Founding offer',
+  },
+  plans: [
+    {
+      name: 'Small Team', price: '$890', unit: 'per year, flat', note: 'Up to 25 learners',
+      items: ['Everything in Pro', 'One flat price, no seat counting', 'Great for a single gym, café or shop'],
+      cta: 'Get Small Team', topic: 'Lottie Courses',
+    },
+    {
+      name: 'Essentials', price: '$29', unit: 'per learner per year', note: 'Minimum 10 learners',
+      items: ['Required training and core safety courses', 'One industry pack', 'Extra packs $10 per learner per year'],
+      cta: 'Get Essentials', topic: 'Lottie Courses',
+    },
+    {
+      name: 'Pro', price: '$49', unit: 'per learner per year', note: 'Minimum 10 learners', featured: true,
+      items: ['Every course and all 25 industry packs', 'Role paths, plus the Shift Leads and Managers path', 'Refreshers, soft skills and leadership', 'Manager dashboard and reminders: coming soon'],
+      cta: 'Get Pro', topic: 'Lottie Courses',
+    },
+    {
+      name: 'Enterprise', price: 'From $5,000', unit: 'per year', note: '250+ learners',
+      items: ['Everything in Pro', 'Custom branding and a named contact', 'Multi-year terms', 'SCORM export and policy upload: coming soon'],
+      cta: 'Talk to us', topic: 'Lottie Courses',
+    },
+  ],
+  extras: [
+    'Monthly billing: Essentials $3.49, Pro $5.99 per learner per month, billed only for active learners.',
+    'Single courses: $12 per learner, $19 for state-mandated courses.',
+    'Free forever: Find Your Leadership Style.',
+  ],
+};

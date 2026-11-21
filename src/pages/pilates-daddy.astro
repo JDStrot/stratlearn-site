@@ -115,15 +115,19 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
           <div class="price">
             <div class="price-amount">$150 <span>per event</span></div>
             <ul>
+              <li>Includes your instructor, the class and the music</li>
               <li>I come to you, anywhere in San Diego</li>
               <li>Guests bring their own mats and props</li>
-              <li>Need mats, a studio or props? Tick it in the form and I'll send options.</li>
             </ul>
+            <div class="price-extra">
+              <strong>Extra, priced on request</strong>
+              <span>Mats, props or studio space. Tick what you need in the form and I'll send a quote.</span>
+            </div>
           </div>
           <p>Share your date, group size and location, and I'll reply within one business day.</p>
           <p>Prefer email? <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
         </div>
-        <ContactForm topics={topics} needs={['Mats', 'Studio space', 'Props']} messageLabel="Event details" messagePlaceholder="Date, time, group size and location" />
+        <ContactForm topics={topics} needs={['Mats (extra)', 'Studio space (extra)', 'Props (extra)']} messageLabel="Event details" messagePlaceholder="Date, time, group size and location" />
       </div>
     </section>
   </main>
@@ -183,6 +187,9 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
   .price-amount span { font-family: var(--caps); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--lilac); margin-left: .4rem; }
   .price ul { list-style: none; padding: 0; margin: 1.1rem 0 0; display: grid; gap: .5rem; }
   .price li { padding-left: 1.6rem; position: relative; }
+  .price-extra { margin-top: 1.2rem; padding-top: 1.1rem; border-top: 1px dashed rgba(197,168,245,.45); display: grid; gap: .3rem; }
+  .price-extra strong { font-family: var(--caps); font-weight: 600; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--lilac); }
+  .price-extra span { color: #efe7ff; }
   .price li::before { content: '✦'; position: absolute; left: 0; color: var(--lilac); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
 
