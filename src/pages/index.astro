@@ -100,6 +100,24 @@ const topics = ['Fractional L&D Consultant', 'eLearning Library', 'Custom eLearn
       </div>
     </section>
 
+    <section id="free-course" class="section course">
+      <div class="wrap">
+        <div class="course-head">
+          <div>
+            <span class="eyebrow">Try a free course</span>
+            <h2>Find Your Leadership Style.</h2>
+          </div>
+          <div class="course-copy">
+            <p>A short, interactive course in English and Spanish. Play through it to see how STRATLEARN makes learning stick.</p>
+            <a href="/preview" class="btn btn-primary">Open the free course</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-frame">
+        <iframe src="/preview" title="Find Your Leadership Style, a free STRATLEARN course" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+      </div>
+    </section>
+
     <section class="section pd-teaser">
       <div class="wrap pd-grid">
         <img src="/pilates-daddy/shirt.jpg" alt="Pilates Daddy logo on Jesse's shirt, framed by a Pilates ring" width="1400" height="803" class="pd-logo" loading="lazy" />
@@ -209,6 +227,16 @@ const topics = ['Fractional L&D Consultant', 'eLearning Library', 'Custom eLearn
   .headshot { margin-top: 2rem; border-radius: 20px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 68% 30%; width: 100%; max-width: 420px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.45); }
   .badges { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem; }
   .badges li { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--plum); background: #fff; border: 1px solid var(--lilac); padding: .55rem .9rem .45rem; border-radius: 999px; }
+  .course { background: var(--paper); }
+  .course-head { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: end; margin-bottom: 2.5rem; }
+  .course-copy p { color: var(--muted); font-size: 1.15rem; margin-bottom: 1.4rem; }
+  .course-frame { width: 100%; padding: 0 24px; max-width: calc(var(--wrap) + 48px); margin: 0 auto; }
+  .course-frame iframe { display: block; width: 100%; height: 700px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 30px 60px -35px rgba(64,2,101,.45); }
+  @media (max-width: 960px) { .course-head { grid-template-columns: 1fr; gap: 1.2rem; } }
+  @media (max-width: 640px) {
+    .course-frame { padding: 0; }
+    .course-frame iframe { height: 100vh; height: 100dvh; border: 0; border-radius: 0; box-shadow: none; }
+  }
   .pd-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
   .pd-logo { width: 100%; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.5); }
   .pd-teaser p { color: var(--muted); font-size: 1.15rem; margin: 1.2rem 0 2rem; }
