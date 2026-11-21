@@ -5,31 +5,24 @@ import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { SITE } from '../site';
 
-// Service copy: Jesse's four offerings. Body text is a first draft; edit freely.
+// Service copy: Jesse's three offerings. Body text is a first draft; edit freely.
 const services = [
   {
     n: '01',
-    title: 'Learning Consultancy',
-    body: 'Strategy before content. We map the skills that move your business, find the gaps, and design the learning plan that closes them.',
+    title: 'Fractional L&D Consultant',
+    body: 'A senior Learning & Development partner for your company, without a full-time hire. Strategy first: we map the skills that move your business, then build the onboarding, upskilling and leadership programs, and the systems to run them.',
     href: '#contact',
-    cta: 'Start a project',
+    cta: 'Start the conversation',
   },
   {
     n: '02',
-    title: 'Fractional L&D',
-    body: 'A senior Learning & Development partner for your company, without a full-time hire. Onboarding, upskilling, leadership programs and the systems to run them.',
-    href: '#contact',
-    cta: 'Ask about availability',
-  },
-  {
-    n: '03',
     title: 'eLearning Library',
     body: 'An engaging off-the-shelf course library your team can start today, with custom options built around your brand, your processes and your LMS.',
     href: '#elearning',
     cta: 'Explore the library',
   },
   {
-    n: '04',
+    n: '03',
     title: 'Workshops & Team Building',
     body: 'Interactive workshops that build real skills, plus team events with energy, including Pilates sessions from Pilates Daddy.',
     href: '/pilates-daddy',
@@ -37,7 +30,7 @@ const services = [
   },
 ];
 
-const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', 'Custom eLearning', 'Workshops & Team Building', 'Pilates event', 'Something else'];
+const topics = ['Fractional L&D Consultant', 'eLearning Library', 'Custom eLearning', 'Workshops & Team Building', 'Pilates event', 'Something else'];
 ---
 <Base>
   <Header />
@@ -49,7 +42,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
           <span class="eyebrow">The Strategic Learning Co.</span>
           <h1>Learning with a <em>strategy</em> behind it.</h1>
           <p class="lede">
-            STRATLEARN helps companies build teams that grow: learning consultancy, fractional L&amp;D support,
+            STRATLEARN helps companies build teams that grow: fractional L&amp;D consulting,
             ready-to-launch eLearning, and workshops people actually enjoy.
           </p>
           <div class="hero-ctas">
@@ -72,7 +65,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
     <section id="services" class="section">
       <div class="wrap">
         <span class="eyebrow">Services</span>
-        <h2 class="section-title">Four ways we help your people grow.</h2>
+        <h2 class="section-title">Three ways we help your people grow.</h2>
         <div class="cards">
           {services.map((s) => (
             <article class="card">
@@ -196,7 +189,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
   .section.soft { background: var(--mist); }
   .section-title { max-width: 40rem; margin-bottom: 3rem; }
 
-  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.6rem; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
   .card:hover { border-color: var(--lilac); transform: translateY(-3px); }
   .card-n { font-family: var(--caps); font-weight: 700; color: var(--lilac); letter-spacing: .1em; font-size: .9rem; }
@@ -230,7 +223,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
   @media (max-width: 960px) {
     .hero-grid, .split, .contact-grid, .pd-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .hero-mark { max-width: 420px; }
-    .cards { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: 1fr; max-width: 560px; }
   }
   @media (max-width: 640px) {
     .cards { grid-template-columns: 1fr; }
