@@ -3,7 +3,7 @@
 // Secrets (set in Cloudflare Pages > Settings > Variables and secrets, never in code):
 //   RESEND_API_KEY       Resend API key
 //   TURNSTILE_SECRET_KEY Turnstile secret (optional until Turnstile is set up)
-//   CONTACT_TO           Inbox that receives messages, e.g. hello@stratlearn.co
+//   CONTACT_TO           Inbox that receives messages, e.g. jesse@stratlearn.co
 //   CONTACT_FROM         Verified sender, e.g. "STRATLEARN Website <website@stratlearn.co>"
 
 const json = (body, status = 200) =>

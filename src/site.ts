@@ -6,7 +6,7 @@ export const SITE = {
   description:
     'STRATLEARN designs training that people finish and businesses feel: strategy, course design and e-learning for teams that need to perform.',
   // Shown on the page and used as the fallback when the form can't send.
-  email: 'hello@stratlearn.co',
+  email: 'jesse@stratlearn.co',
   // Your Cal.com booking link, e.g. "stratlearn/discovery". Leave empty to hide the embed.
   calLink: '',
   // Cloudflare Turnstile site key (public). Leave empty in local dev.
