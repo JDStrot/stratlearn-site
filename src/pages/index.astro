@@ -109,7 +109,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
 
     <section class="section pd-teaser">
       <div class="wrap pd-grid">
-        <img src="/pilates-daddy/logo.png" alt="Pilates Daddy" width="1000" height="623" class="pd-logo" />
+        <img src="/pilates-daddy/shirt.jpg" alt="Pilates Daddy logo on Jesse's shirt, framed by a Pilates ring" width="1400" height="803" class="pd-logo" loading="lazy" />
         <div>
           <span class="eyebrow">Workshops &amp; Events</span>
           <h2>Team building, with a little more core.</h2>
@@ -127,6 +127,7 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
         <div>
           <span class="eyebrow">About</span>
           <h2>Meet Jesse Stråt.</h2>
+          <img class="headshot" src="/photos/jesse-headshot.jpg" alt="Jesse Stråt, founder of STRATLEARN" width="1400" height="925" loading="lazy" />
         </div>
         <div class="split-body">
           <p>
@@ -205,15 +206,18 @@ const topics = ['Learning Consultancy', 'Fractional L&D', 'eLearning Library', '
   .card-link:hover { color: var(--plum); }
 
   .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  #about .split-body { padding-top: 3.2rem; }
+  @media (max-width: 960px) { #about .split-body { padding-top: 0; } }
   .split-body { font-size: 1.15rem; color: var(--muted); }
   .ticks { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .6rem; }
   .ticks li { padding-left: 1.8rem; position: relative; color: var(--ink); }
   .ticks li::before { content: '✦'; position: absolute; left: 0; color: var(--violet); }
 
+  .headshot { margin-top: 2rem; border-radius: 20px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 68% 30%; width: 100%; max-width: 420px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.45); }
   .badges { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem; }
   .badges li { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--plum); background: #fff; border: 1px solid var(--lilac); padding: .55rem .9rem .45rem; border-radius: 999px; }
   .pd-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
-  .pd-logo { width: 100%; max-width: 460px; justify-self: center; }
+  .pd-logo { width: 100%; border-radius: 22px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.5); }
   .pd-teaser p { color: var(--muted); font-size: 1.15rem; margin: 1.2rem 0 2rem; }
 
   .contact { background: linear-gradient(135deg, var(--plum), #2a0143 70%); color: #efe7ff; }

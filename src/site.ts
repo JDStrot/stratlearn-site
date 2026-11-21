@@ -11,4 +11,5 @@ export const SITE = {
   calLink: '',
   // Cloudflare Turnstile site key (public). Leave empty in local dev.
   turnstileSiteKey: '',
+  pilatesInstagram: 'https://www.instagram.com/yourpilatesdaddy/',
 };

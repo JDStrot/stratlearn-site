@@ -44,7 +44,7 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
         <p class="pd-lede">Strong cores. Big energy. Pilates for teams, events and anyone ready to feel it tomorrow.</p>
         <div class="pd-ctas">
           <a href="#book" class="btn btn-light">Book a session</a>
-          <a href="#offers" class="btn btn-outline-light">What we offer</a>
+          <a href={SITE.pilatesInstagram} class="btn btn-outline-light" target="_blank" rel="noopener">@yourpilatesdaddy</a>
         </div>
       </div>
     </section>
@@ -65,24 +65,43 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
       </div>
     </section>
 
+    <section class="section media">
+      <div class="wrap media-grid">
+        <div class="video-wrap">
+          <video src="/pilates-daddy/pilates-daddy.mp4" poster="/pilates-daddy/video-poster.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Pilates Daddy class highlights"></video>
+        </div>
+        <div>
+          <span class="eyebrow">See it in action</span>
+          <h2>Modern movement, <em>maximum</em> fun.</h2>
+          <p class="media-copy">From rooftops to studios, every class is built to move you, challenge you and leave you smiling. Follow along for class drops, events and behind-the-scenes.</p>
+          <img class="rooftop" src="/pilates-daddy/rooftop-class.jpg" alt="Jesse leading a rooftop Pilates class in downtown San Diego" width="1200" height="1500" loading="lazy" />
+          <a href={SITE.pilatesInstagram} class="btn btn-primary ig" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Follow @yourpilatesdaddy
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section soft">
       <div class="wrap why">
+        <img class="ring" src="/pilates-daddy/jesse-ring.jpg" alt="Jesse Stråt, Pilates Daddy, holding a Pilates ring" width="1400" height="934" loading="lazy" />
         <div>
-          <span class="eyebrow">Why Pilates Daddy</span>
+          <span class="eyebrow">Meet Pilates Daddy</span>
           <h2>Serious technique. <em>Zero</em> boring.</h2>
           <p class="bio">
             Pilates Daddy is Jesse Stråt, a group fitness instructor teaching Pilates and Sculpt classes in
             San Diego, CA. Jesse is also an award-winning Learning &amp; Development executive, so every class is
             built to be fun, clear and something you'll remember.
           </p>
+          <ul class="ticks">
+            <li>Pilates and Sculpt classes, taught in San Diego</li>
+            <li>Every level welcome, with modifications for every body</li>
+            <li>Custom mixes that keep the room moving</li>
+            <li>Mat-based, so we can set up almost anywhere</li>
+            <li>Pairs with STRATLEARN workshops for a full team day</li>
+          </ul>
         </div>
-        <ul class="ticks">
-          <li>Pilates and Sculpt classes, taught in San Diego</li>
-          <li>Every level welcome, with modifications for every body</li>
-          <li>Custom mixes that keep the room moving</li>
-          <li>Mat-based, so we can set up almost anywhere</li>
-          <li>Pairs with STRATLEARN workshops for a full team day</li>
-        </ul>
       </div>
     </section>
 
@@ -129,13 +148,22 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
   .offer h3 { margin-bottom: .7rem; }
   .offer p { color: var(--muted); margin: 0; }
 
-  .why { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; }
+  .why { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: center; }
   .bio { color: var(--muted); font-size: 1.1rem; margin-top: 1.4rem; }
   .why h2 em { font-style: italic; color: var(--violet); }
   .ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; font-size: 1.15rem; }
   .ticks li { padding-left: 1.9rem; position: relative; }
   .ticks li::before { content: '✦'; position: absolute; left: 0; color: var(--violet); }
 
+  .media-grid { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: 4rem; align-items: center; justify-content: center; }
+  .video-wrap { border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(64,2,101,.6); background: var(--plum); aspect-ratio: 536 / 954; }
+  .video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media h2 em { font-style: italic; color: var(--violet); }
+  .media-copy { color: var(--muted); font-size: 1.15rem; margin: 1.2rem 0 1.6rem; max-width: 34rem; }
+  .rooftop { width: 100%; max-width: 520px; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 30%; border-radius: 18px; margin-bottom: 1.8rem; }
+  .ig { gap: .6rem; }
+  .ring { width: 100%; border-radius: 22px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 48% 50%; box-shadow: 0 30px 60px -30px rgba(64,2,101,.45); }
+  .ticks { margin-top: 1.6rem; }
   .contact { background: linear-gradient(135deg, var(--plum), #2a0143 70%); color: #efe7ff; }
   .contact h2 { color: #fff; margin-bottom: 1.2rem; }
   .contact a { color: var(--lilac); }
@@ -144,6 +172,7 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
 
   @media (max-width: 960px) {
     .offers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-    .why, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .why, .contact-grid, .media-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .video-wrap, .ring { max-width: 380px; margin: 0 auto; width: 100%; }
   }
 </style>
