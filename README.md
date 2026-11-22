@@ -23,9 +23,9 @@ npm run dev
 1. Push this folder to its own GitHub repo.
 2. Netlify > Add new site > Import from Git > pick the repo. `netlify.toml` already sets build `npm run build` and publish `dist`.
 3. Domain management: add `stratlearn.co` (Netlify redirects `www` to it automatically once both are added).
-4. Resend: add and verify `stratlearn.co`, create an API key.
-5. Site configuration > Environment variables: `RESEND_API_KEY`, `CONTACT_TO` (jesse@stratlearn.co), `CONTACT_FROM` (e.g. `STRATLEARN Website <website@stratlearn.co>`), and `TURNSTILE_SECRET_KEY` once Turnstile is set up.
-6. The contact form posts to `/api/contact`, served by `netlify/functions/contact.mjs` (same logic as the Cloudflare function).
+4. Contact forms use Netlify Forms (no extra account). Three forms: `contact` (home), `courses`, `pilates-booking`. If Forms shows "Enable form detection", turn it on and redeploy.
+5. Email alerts: Netlify > Forms > Form notifications > Add notification > Email notification, send to jesse@stratlearn.co.
+6. `netlify/functions/contact.mjs` (Resend) is kept as an optional alternative and is not used by the forms.
 7. Cal.com link and Turnstile site key go in `src/site.ts`.
 
 ## Deploy (Cloudflare Pages, alternative)

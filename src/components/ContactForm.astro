@@ -1,9 +1,10 @@
 ---
 import { SITE } from '../site';
-interface Props { topics: string[]; defaultTopic?: string; needs?: string[]; messageLabel?: string; messagePlaceholder?: string }
-const { topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', messagePlaceholder = '' } = Astro.props;
+interface Props { formName?: string; topics: string[]; defaultTopic?: string; needs?: string[]; messageLabel?: string; messagePlaceholder?: string }
+const { formName = 'contact', topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', messagePlaceholder = '' } = Astro.props;
 ---
-<form class="form" method="post" action="/api/contact" novalidate data-contact-form>
+<form class="form" name={formName} method="post" action="/" novalidate data-contact-form data-netlify="true" netlify-honeypot="website">
+  <input type="hidden" name="form-name" value={formName} />
   <label>Name<input name="name" autocomplete="name" required /></label>
   <label>Email<input name="email" type="email" autocomplete="email" required /></label>
   <label><span>Company <span class="opt">(optional)</span></span><input name="company" autocomplete="organization" /></label>
@@ -38,9 +39,10 @@ const { topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', 
       const btn = form.querySelector('button[type=submit]');
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok || !data.ok) throw new Error();
+        // Netlify Forms: post url-encoded fields to the site root.
+        const body = new URLSearchParams(new FormData(form)).toString();
+        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        if (!res.ok) throw new Error();
         form.reset();
         status.className = 'form-status ok';
         status.textContent = "Thanks! We'll be in touch within one business day.";
