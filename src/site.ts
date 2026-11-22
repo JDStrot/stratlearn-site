@@ -9,6 +9,8 @@ export const SITE = {
   email: 'jesse@stratlearn.co',
   // Your Cal.com booking link, e.g. "stratlearn/discovery". Leave empty to hide the embed.
   calLink: '',
+  // Web3Forms access key (public by design): contact forms email jesse@stratlearn.co through it.
+  web3formsKey: '8e471552-7bee-471e-98c6-3ec1417b92f1',
   // Cloudflare Turnstile site key (public). Leave empty in local dev.
   turnstileSiteKey: '',
   pilatesInstagram: 'https://www.instagram.com/yourpilatesdaddy/',

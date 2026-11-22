@@ -3,8 +3,11 @@ import { SITE } from '../site';
 interface Props { formName?: string; topics: string[]; defaultTopic?: string; needs?: string[]; messageLabel?: string; messagePlaceholder?: string }
 const { formName = 'contact', topics, defaultTopic = topics[0], needs = [], messageLabel = 'Message', messagePlaceholder = '' } = Astro.props;
 ---
-<form class="form" name={formName} method="post" action="/" novalidate data-contact-form data-netlify="true" netlify-honeypot="website">
-  <input type="hidden" name="form-name" value={formName} />
+<form class="form" name={formName} method="post" action="https://api.web3forms.com/submit" novalidate data-contact-form>
+  <input type="hidden" name="access_key" value={SITE.web3formsKey} />
+  <input type="hidden" name="form_name" value={formName} />
+  <input type="hidden" name="from_name" value="STRATLEARN website" />
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
   <label>Name<input name="name" autocomplete="name" required /></label>
   <label>Email<input name="email" type="email" autocomplete="email" required /></label>
   <label><span>Company <span class="opt">(optional)</span></span><input name="company" autocomplete="organization" /></label>
@@ -20,7 +23,6 @@ const { formName = 'contact', topics, defaultTopic = topics[0], needs = [], mess
     </fieldset>
   )}
   <label>{messageLabel}<textarea name="message" rows="5" required placeholder={messagePlaceholder}></textarea></label>
-  <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
   {SITE.turnstileSiteKey && <div class="cf-turnstile" data-sitekey={SITE.turnstileSiteKey}></div>}
   <button class="btn btn-primary" type="submit">Send message</button>
   <p class="form-status" role="status" aria-live="polite"></p>
@@ -39,10 +41,13 @@ const { formName = 'contact', topics, defaultTopic = topics[0], needs = [], mess
       const btn = form.querySelector('button[type=submit]');
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
       try {
-        // Netlify Forms: post url-encoded fields to the site root.
-        const body = new URLSearchParams(new FormData(form)).toString();
-        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
-        if (!res.ok) throw new Error();
+        // Web3Forms emails the submission to jesse@stratlearn.co.
+        const fd = new FormData(form);
+        fd.set('subject', `Website: ${fd.get('topic') || 'Enquiry'} from ${fd.get('name')}`);
+        fd.set('needs', fd.getAll('needs').join(', '));
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: fd });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.success) throw new Error();
         form.reset();
         status.className = 'form-status ok';
         status.textContent = "Thanks! We'll be in touch within one business day.";

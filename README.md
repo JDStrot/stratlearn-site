@@ -23,10 +23,9 @@ npm run dev
 1. Push this folder to its own GitHub repo.
 2. Netlify > Add new site > Import from Git > pick the repo. `netlify.toml` already sets build `npm run build` and publish `dist`.
 3. Domain management: add `stratlearn.co` (Netlify redirects `www` to it automatically once both are added).
-4. Contact forms use Netlify Forms (no extra account). Three forms: `contact` (home), `courses`, `pilates-booking`. If Forms shows "Enable form detection", turn it on and redeploy.
-5. Email alerts: Netlify > Forms > Form notifications > Add notification > Email notification, send to jesse@stratlearn.co.
-6. `netlify/functions/contact.mjs` (Resend) is kept as an optional alternative and is not used by the forms.
-7. Cal.com link and Turnstile site key go in `src/site.ts`.
+4. Contact forms send through Web3Forms (key in `src/site.ts`, emails jesse@stratlearn.co). Three forms: `contact` (home), `courses`, `pilates-booking`, shown in the email as form_name. Change the receiving email in the Web3Forms dashboard.
+5. `netlify/functions/contact.mjs` (Resend) is kept as an optional alternative and is not used by the forms.
+6. Cal.com link and Turnstile site key go in `src/site.ts`.
 
 ## Deploy (Cloudflare Pages, alternative)
 1. Push this folder to its own GitHub repo (keep it separate from product code).
