@@ -19,7 +19,16 @@ npm install
 npm run dev
 ```
 
-## Deploy (Cloudflare Pages)
+## Deploy (Netlify)
+1. Push this folder to its own GitHub repo.
+2. Netlify > Add new site > Import from Git > pick the repo. `netlify.toml` already sets build `npm run build` and publish `dist`.
+3. Domain management: add `stratlearn.co` (Netlify redirects `www` to it automatically once both are added).
+4. Resend: add and verify `stratlearn.co`, create an API key.
+5. Site configuration > Environment variables: `RESEND_API_KEY`, `CONTACT_TO` (jesse@stratlearn.co), `CONTACT_FROM` (e.g. `STRATLEARN Website <website@stratlearn.co>`), and `TURNSTILE_SECRET_KEY` once Turnstile is set up.
+6. The contact form posts to `/api/contact`, served by `netlify/functions/contact.mjs` (same logic as the Cloudflare function).
+7. Cal.com link and Turnstile site key go in `src/site.ts`.
+
+## Deploy (Cloudflare Pages, alternative)
 1. Push this folder to its own GitHub repo (keep it separate from product code).
 2. Cloudflare > Workers & Pages > Create > Pages > Connect to Git. Framework preset: Astro. Build command `npm run build`, output `dist`.
 3. Custom domains: add `stratlearn.co` and `www.stratlearn.co`; add a Redirect Rule www → apex (301, keep path). Test a deep link like `www.stratlearn.co/pilates-daddy`.

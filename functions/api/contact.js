@@ -35,7 +35,7 @@ export async function onRequestPost({ request, env }) {
       body: new URLSearchParams({
         secret: env.TURNSTILE_SECRET_KEY,
         response: (form.get('cf-turnstile-response') || '').toString(),
-        remoteip: request.headers.get('CF-Connecting-IP') || '',
+        remoteip: request.headers.get('CF-Connecting-IP') || request.headers.get('x-nf-client-connection-ip') || '',
       }),
     }).then((r) => r.json()).catch(() => ({ success: false }));
     if (!verify.success) return json({ ok: false, error: 'captcha' }, 403);

@@ -33,8 +33,8 @@ export const features = [
     kind: 'phone',
   },
   {
-    title: 'Made for the people on the floor.',
-    body: 'Phone-first, easy to read, and short enough for a break. Real shift moments, plain words, no lectures.',
+    title: 'Made for the people who keep things running.',
+    body: 'Frontline and entry-level crews are the heart of every shift. Each lesson is phone-first, easy to read, and quick enough to learn and get right back to work. Real shift moments, plain words, no lectures.',
     image: { src: IMG + 'phone-2-lesson-map.jpg', alt: 'Phone showing a course map of short lessons with Lottie the axolotl' },
     kind: 'phone',
   },
