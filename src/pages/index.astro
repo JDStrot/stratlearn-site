@@ -96,7 +96,7 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
       <div class="wrap split">
         <div>
           <span class="eyebrow">About</span>
-          <h2>Meet Jesse Stråt.</h2>
+          <div class="about-title"><h2>Meet Jesse Stråt.</h2><img class="about-icon" src="/icons/icon-learning.svg" alt="" width="500" height="500" loading="lazy" /></div>
           <img class="headshot" src="/photos/jesse-headshot-square.jpg" alt="Jesse Stråt, founder of STRATLEARN" width="700" height="700" loading="lazy" />
         </div>
         <div class="split-body">
@@ -193,6 +193,8 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
   .ticks li { padding-left: 1.8rem; position: relative; color: var(--ink); }
   .ticks li::before { content: '✦'; position: absolute; left: 0; color: var(--violet); }
 
+  .about-title { display: flex; align-items: center; gap: 1rem; }
+  .about-icon { width: 84px; height: 84px; flex: none; margin-top: -1.2rem; }
   .headshot { margin-top: 2rem; border-radius: 20px; aspect-ratio: 1 / 1; object-fit: cover; width: 100%; max-width: 360px; box-shadow: 0 30px 60px -30px rgba(64,2,101,.45); }
   .badges { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem; }
   .badges li { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--plum); background: #fff; border: 1px solid var(--lilac); padding: .55rem .9rem .45rem; border-radius: 999px; }
