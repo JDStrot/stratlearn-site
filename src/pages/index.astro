@@ -10,6 +10,7 @@ import { SITE } from '../site';
 const services = [
   {
     n: '01',
+    icon: '/icons/icon-consultant.svg',
     title: 'Fractional L&D Consultant',
     body: 'A senior L&D partner without the full-time hire. We map the skills that move your business, then build the programs to grow them.',
     href: '#contact',
@@ -17,6 +18,7 @@ const services = [
   },
   {
     n: '02',
+    icon: '/icons/icon-elearning.svg',
     title: 'eLearning Library',
     body: '300+ short, game-style Lottie Courses in English and Spanish. Ready today, with custom options.',
     href: '/courses',
@@ -24,6 +26,7 @@ const services = [
   },
   {
     n: '03',
+    icon: '/icons/icon-workshops.svg',
     title: 'Workshops & Team Building',
     body: 'Hands-on workshops and high-energy team events, including Pilates with Pilates Daddy.',
     href: '/pilates-daddy',
@@ -62,7 +65,7 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
         <div class="cards">
           {services.map((s) => (
             <article class="card">
-              <span class="card-n">{s.n}</span>
+              <div class="card-top"><img class="card-icon" src={s.icon} alt="" width="500" height="500" loading="lazy" /><span class="card-n">{s.n}</span></div>
               <h3>{s.title}</h3>
               <p>{s.body}</p>
               <a class="card-link" href={s.href}>{s.cta} <span aria-hidden="true">→</span></a>
@@ -174,6 +177,8 @@ const topics = ['Fractional L&D Consultant', 'Lottie Courses', 'Custom eLearning
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.6rem; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
   .card:hover { border-color: var(--lilac); transform: translateY(-3px); }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+  .card-icon { width: 76px; height: 76px; }
   .card-n { font-family: var(--caps); font-weight: 700; color: var(--lilac); letter-spacing: .1em; font-size: .9rem; }
   .card h3 { margin: 1rem 0 .7rem; }
   .card p { color: var(--muted); font-size: .98rem; margin: 0 0 1.4rem; flex: 1; }
