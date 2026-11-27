@@ -13,7 +13,7 @@ export const lottieIntro = {
 };
 
 export const proof = [
-  { big: '300+', small: 'courses' },
+  { big: '125+', small: 'courses & growing' },
   { big: '2', small: 'languages in every course (EN | ES)' },
   { big: '5–8 min', small: 'per course' },
   { big: '25', small: 'industry packs' },
