@@ -67,6 +67,30 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
       </div>
     </section>
 
+    <section id="mission" class="section mvv-section" aria-labelledby="mvv-title">
+      <div class="wrap">
+        <span class="eyebrow">What drives Pilates Daddy</span>
+        <h2 id="mvv-title" class="sr-only">Mission, vision and values</h2>
+        <div class="mvv">
+          <article class="mvv-card light">
+            <img src="/pilates-daddy/icon-ball.png" alt="" width="500" height="500" loading="lazy" />
+            <h3 class="mvv-label">Mission</h3>
+            <p>To make you <em>laugh</em>, move you <em>deeply</em>, and <b>rebuild</b> you <b>stronger</b> through the power of <b>Pilates</b>.</p>
+          </article>
+          <article class="mvv-card dark">
+            <img src="/pilates-daddy/icon-circle.png" alt="" width="500" height="500" loading="lazy" />
+            <h3 class="mvv-label">Vision</h3>
+            <p>To <em>empower</em> every <b>Pilates</b> student to take <em>center stage</em>–in the <b>studio</b> and in <em>life</em>.</p>
+          </article>
+          <article class="mvv-card light">
+            <img src="/pilates-daddy/icon-dumbbells.png" alt="" width="500" height="500" loading="lazy" />
+            <h3 class="mvv-label">Values</h3>
+            <p class="values">Humor.<br />Storytelling.<br /><em>Unapologetic</em> Confidence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section soft media">
       <div class="wrap media-grid">
         <div class="video-wrap">
@@ -98,7 +122,7 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
           </p>
           <ul class="ticks">
             <li>Pilates and Sculpt classes, taught in San Diego</li>
-            <li>Every level welcome, with modifications for every body</li>
+            <li>Every level welcome, with modifications for most exercises</li>
             <li>Custom mixes that keep the room moving</li>
             <li>Mat-based, so we can set up almost anywhere</li>
             <li>Pairs with STRATLEARN workshops for a full team day</li>
@@ -193,10 +217,23 @@ const topics = ['Pilates event', 'Wellness day', 'Private or small group session
   .price li::before { content: '✦'; position: absolute; left: 0; color: var(--lilac); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; }
 
+  .mvv-section { padding-top: 0; }
+  .mvv-section .eyebrow { display: block; margin-bottom: 1.25rem; }
+  .mvv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .mvv-card { position: relative; border-radius: 18px; padding: 1.2rem 1.6rem 1.7rem; overflow: hidden; }
+  .mvv-card.light { background: linear-gradient(160deg, var(--mist) 0%, #d9c6fb 100%); }
+  .mvv-card.dark { background: radial-gradient(28rem 18rem at 100% 0%, #5a1f8a 0%, var(--plum) 60%); color: #fff; }
+  .mvv-card img { position: absolute; top: 1.2rem; right: 1.2rem; width: 56px; height: 56px; object-fit: contain; }
+  .mvv-label { font-family: var(--caps); font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; color: var(--plum); margin: 0 0 .9rem; min-height: 56px; display: flex; align-items: center; padding-right: 64px; }
+  .mvv-card.dark .mvv-label { color: var(--lilac); }
+  .mvv-card p { font-family: var(--serif); font-size: clamp(1.5rem, 2.1vw, 1.85rem); line-height: 1.15; margin: 0; max-width: 15em; color: #fff; }
+  .mvv-card.light p { color: var(--plum); }
+  .mvv-card.light p em { color: var(--violet); }
+  .mvv-card p b { font-family: var(--sans); font-weight: 500; font-size: .86em; letter-spacing: -.01em; }
   @media (max-width: 720px) {
   }
   @media (max-width: 960px) {
-    .offers { grid-template-columns: 1fr; gap: .9rem; }
+    .offers, .mvv { grid-template-columns: 1fr; gap: .9rem; }
     .why, .contact-grid, .media-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .video-wrap, .ring { max-width: 380px; margin: 0 auto; width: 100%; }
   }
